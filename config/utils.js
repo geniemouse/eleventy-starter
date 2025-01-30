@@ -81,7 +81,7 @@ export function getEnvironment() {
  */
 export function getHosting() {
 	return (
-		(process.env.URL.includes("localhost") ? "local" : "live")
+		(process.env.URL?.includes("localhost") ? "local" : "live")
 			// Test the negative expression; ensures the fall-back value
 			// defaults to (the safer) `PRODUCTION` over "DEVELOPMENT"
 			.toUpperCase()
