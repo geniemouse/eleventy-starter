@@ -1,0 +1,27 @@
+/**
+ * Color scheme properties
+ * ---
+ *
+ * Including support for dark/light themes...
+ * [color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme)
+ *
+ */
+
+:root {
+	--color-background: #fff;
+	--color-brand: #0371d3;
+	--color-text: #222;
+}
+
+/* Very basic support for a dark color scheme */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--browser-theme: "dark";
+	}
+
+	/* Allow users to choose website theme via JavaScript */
+	:root:not([data-user-color-scheme]) {
+		--color-background: #1a1a1a;
+		--color-text: #eee;
+	}
+}

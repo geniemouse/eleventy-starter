@@ -1,0 +1,9 @@
+/**
+ * Table global styling & resets
+ * ---
+ */
+
+/* Correct table border color inheritance in Chrome and Safari */
+table {
+	border-color: currentcolor;
+}

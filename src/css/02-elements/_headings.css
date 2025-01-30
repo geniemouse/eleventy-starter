@@ -1,0 +1,31 @@
+/**
+ * Heading global styling & resets
+ * ---
+ * Switch to `rem` units for headings
+ */
+
+h1 {
+	font-size: 2rem;
+	margin: 0.67em 0;
+	/** Keep h1 margins consistent, even when nested. */
+}
+
+h2 {
+	font-size: 1.5rem;
+}
+
+h3 {
+	font-size: 1.17rem;
+}
+
+h4 {
+	font-size: 1.00rem;
+}
+
+h5 {
+	font-size: 0.83rem;
+}
+
+h6 {
+	font-size: 0.67rem;
+}

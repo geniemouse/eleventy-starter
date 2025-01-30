@@ -1,0 +1,10 @@
+<script>
+(function () {
+	"use strict";
+	window.APP = {};
+	APP.ENV = "{{ app.env }} ({{ app.hosting | fallback: "UNKNOWN" }})";
+    APP.LANG = "{{ app.language }}";
+	APP.LOCALE = "{{ app.locale }}";
+	APP.VERSION = "{{ app.version }}";
+})();
+</script>

@@ -1,0 +1,51 @@
+/**
+ * Accessibility (A11y) utilities
+ * ---
+ *
+ * @todo: Add skip-link styling
+ */
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	::before,
+	::after {
+		animation-delay: -1ms !important;
+		animation-duration: 1ms !important;
+		animation-iteration-count: 1 !important;
+		background-attachment: initial !important;
+		scroll-behavior: auto !important;
+		transition-delay: 0s !important;
+		transition-duration: 0s !important;
+	}
+}
+
+:focus-visible {
+	position: relative;
+	outline: 0.4em double var(--color-text);
+	outline-offset: 0.1em;
+	box-shadow: 0 0 0 var(--link-offset) var(--color-background);
+	transition: outline-offset 0.15s linear;
+	overflow: visible;
+	z-index: 1;
+}
+
+/**
+ * Screen reader only text
+ * ---
+ *
+ * Hide text visually, remains exposed to assistive technology
+ *
+ */
+.visually-hidden:not(:focus):not(:active) {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	/* ^^ Clip is deprecated CSS property that older browsers support */
+	clip-path: inset(100%);
+	white-space: nowrap;
+	overflow: hidden;
+}

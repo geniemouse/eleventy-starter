@@ -1,0 +1,26 @@
+# Eleventy
+_site/
+
+
+# Build/developer tools
+.cache  
+.env
+*.log
+*.map
+*.tmp
+
+.netlify/
+logs/
+netlify/edge-functions/_generated
+node_modules/
+tmp/
+
+
+# IDEs/code editors
+*.*-workspace
+
+
+# OS files
+.DS_Store
+Desktop.ini
+Thumbs.db

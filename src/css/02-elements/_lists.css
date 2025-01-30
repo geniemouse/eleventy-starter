@@ -1,0 +1,15 @@
+/**
+ * List global styling & resets
+ * ---
+ */
+
+ul,
+ol,
+menu,
+dir {
+	padding-inline-start: var(--startEndSpacing);
+}
+
+dd {
+	margin-inline-start: var(--startEndSpacing);
+}

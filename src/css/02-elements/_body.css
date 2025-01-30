@@ -1,0 +1,50 @@
+/**
+ * HTML, Body & Global styling
+ * ---
+ *
+ * @note:
+ * CSS Remedy & Modern Normalize stylings are customised and redistributed
+ * throughout here and in the `02-elements` directory.
+ *
+ * -- [cssremedy v0.1.0-beta.2](https://github.com/jensimmons/cssremedy)
+ * -- [modern-normalize v3.0.1](https://github.com/sindresorhus/modern-normalize)
+ *
+ * I have left out anything for (dead) legacy browsers, such as IE10/IE11.
+ *
+ */
+
+/** Use a better box model (opinionated) */
+*,
+::before,
+::after {
+	box-sizing: border-box;
+}
+
+/** Maintain `hidden` behaviour when overriding `display` values */
+[hidden] {
+	display: none;
+}
+
+/**
+ * 1.) Improve consistency of default fonts in all browsers
+ * 2.) Correct the line height in all browsers
+ * 3.) Prevent adjustments of font size after orientation changes in iOS
+ * 4.) Use a more readable tab size (opinionated)
+ */
+html {
+	font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji"; /* 1 */
+	line-height: 1.5; /* 2 */
+	-webkit-text-size-adjust: 100%; /* 3 */
+	tab-size: 4; /* 4 */
+}
+
+body {
+	color: var(--color-text);
+	background-color: var(--color-background);
+	margin: 0;
+}
+
+main {
+	font-size: 1.17rem;
+}

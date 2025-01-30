@@ -1,0 +1,47 @@
+---
+eleventyExcludeFromCollections: true
+excludeFromSitemap: true
+layout: false
+permalink: /public/humans.txt
+---
+
+/* TEAM */
+
+	Developer: {{ app.author.name }}
+	Contact: {{ app.author.email }}
+	Site: {{ app.author.website }}
+	Location: {{ app.author.location }}
+
+
+/* SITE */
+
+	Doctype: HTML5
+	Language: English
+	Last updated: {{ generated | formatDate: "DATETIME_FULL" }}
+
+	Standards: HTML5, CSS3, ES6+
+
+	Components/packages:
+		Eleventy: https://www.11ty.dev/
+		Luxon: https://moment.github.io/luxon/
+
+
+/* ABOUT HUMANS.TXT */
+
+	https://humanstxt.org/
+
+{%- comment -%}
+/* THANKS */
+
+	Name: NAME_OR_URL
+	Social:
+	Location:
+
+	Name: NAME_OR_URL
+	Social:
+	Location:
+
+	Name: NAME_OR_URL
+	Social:
+	Location:
+{%- endcomment -%}

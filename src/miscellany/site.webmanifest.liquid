@@ -1,0 +1,32 @@
+---
+eleventyExcludeFromCollections: true
+excludeFromSitemap: true
+layout: false
+permalink: /public/site.webmanifest
+---
+{
+	"name": "{{ app.site.name }} : {{ app.site.description }}",
+	"short_name": "{{ app.site.name }}",
+	"start_url": "{{ app.site.url  }}",
+	"icons": [
+		{
+			"src": "/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		},
+		{
+			"src": "/maskable.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "maskable"
+		}
+	],
+	"theme_color": "{{ app.theme.color }}",
+	"background_color": "{{ app.theme.bgcolor }}",
+	"display": "standalone"
+}

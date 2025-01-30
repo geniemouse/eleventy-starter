@@ -1,0 +1,21 @@
+/**
+ * Media query properties
+ * ---
+ *
+ */
+
+:root {
+	/** Pixel equivalents against base font of 16px, or equivalent  */
+
+	/** Screens < 767px */
+	--mq-small: "screen and (max-width: 47.9375em)";
+
+	/** Screens > 768px */
+	--mq-medium: "screen and (min-width: 48em)";
+
+	/** Screens > 1024px */
+	--mq-large: "screen and (min-width: 64em)";
+
+	/** Screens > 1440px */
+	--mq-x-large: "screen and (min-width: 90em)";
+}

@@ -1,0 +1,14 @@
+/**
+ * Typography properties
+ * ---
+ *
+ * Font-sizes, line-heights...or a fluid type system?
+ *
+ * [Utopia](https://utopia.fyi)
+ * Fluid responsive design. Scale type and space without breakpoints.
+ *
+ */
+
+:root {
+	--link-offset: 0.4em;
+}

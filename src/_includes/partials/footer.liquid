@@ -1,0 +1,9 @@
+<footer>
+	<p>{{ dictionary.footer.strapline }}</p>
+	<p>
+		&copy; {{ copyright }}
+		{{ dictionary.footer.company | fallback: "Company name." }}
+		{{ dictionary.footer.rights | fallback: "All rights reserved." }}
+	</p>
+	{% comment %} <p>{{ page | debug }}</p> {% endcomment %}
+</footer>

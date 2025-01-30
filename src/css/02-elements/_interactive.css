@@ -1,0 +1,81 @@
+/**
+ * Image & Interactive elements global styling & resets
+ * ---
+ */
+
+/**
+ * Responsive Embeds
+ * ---
+ * 1. Block display is usually what we want
+ * 2. The `vertical-align` removes strange space-below in case authors
+ *    overwrite the display value
+ * 3. Responsive by default
+ * 4. Audio without `[controls]` remains hidden by default
+ */
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+	display: block;
+	vertical-align: middle;
+	max-width: 100%;
+}
+
+audio:not([controls]) {
+	display: none;
+}
+
+/**
+ * Responsive Images
+ * ---
+ * These new elements display inline by default,
+ * but that's not the expected behavior for either one.
+ * This can interfere with proper layout and aspect-ratio handling.
+ *
+ * 1. Remove the unnecessary wrapping `picture`, while maintaining contents
+ * 2. Source elements have nothing to display, so we hide them entirely
+ */
+
+picture {
+	display: contents;
+}
+
+source {
+	display: none;
+}
+
+/**
+ * Aspect Ratios
+ * ---
+ * Maintain intrinsic aspect ratios when `max-width` is applied.
+ * `iframe`, `embed`, and `object` are also embedded, but have
+ * no intrinsic ratio, so their `height` needs to be set explicitly.
+ */
+
+img,
+svg,
+video,
+canvas {
+	height: auto;
+}
+
+/**
+ * Audio Width
+ * ---
+ * There is no good reason elements default to 300px,
+ * and audio files are unlikely to come with a width attribute.
+ */
+
+audio {
+	width: 100%;
+}
+
+/** Add the correct display in Chrome and Safari */
+summary {
+	display: list-item;
+}

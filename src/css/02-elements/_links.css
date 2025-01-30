@@ -1,0 +1,16 @@
+a {
+	color: inherit;
+	font-weight: 600;
+	text-decoration-color: var(--color-brand);
+	text-decoration-thickness: 0.25em;
+	text-decoration-skip-ink: all;
+	text-underline-offset: var(--link-offset);
+
+	/* &:hover,
+	&:focus { } */
+
+	svg {
+		display: inline-block;
+		fill: currentColor;
+	}
+}

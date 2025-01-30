@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ pkg.language }}">
+	<head>
+		<title>{{ title | escape }}</title>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta name="author" content="{{ author | fallback: app.author.name }}">
+		<meta name="description" content="{{ seo_description | fallback: description | fallback: app.site.description | escape }}">
+		<meta name="keywords" content="{{ keywords | fallback: app.site.keywords | escape }}">
+
+		<meta name="format-detection" content="email=no,telephone=no">
+		<meta name="generator" content="{{ eleventy.generator }}">
+		<meta name="theme-color" content="{{ app.theme.color }}">
+
+		<meta name="robots" content="index,follow">
+
+		<link rel="author" href="/humans.txt">
+		<link rel="canonical" href="{{ app.site.url }}{{ page.url }}">
+		<!-- ^^ Prevent duplicate content issues -->
+		<link rel="stylesheet" href="/css/main.css">
+
+		{% include "partials/favicons" %}
+		{% include "partials/namespace" %}
+	</head>
+	<body>
+
+		<main>
+			{{ content }}
+		</main>
+
+		{% include "partials/footer" %}
+		{% include "partials/environment" %}
+		<script type="module" src="/js/main.js"></script>
+	</body>
+</html>
