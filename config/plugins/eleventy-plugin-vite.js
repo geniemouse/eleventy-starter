@@ -15,6 +15,7 @@ export default function runViteForBundlingAssets(eleventyConfig) {
 		// -- https://vite.dev/config/
 		viteOptions: {
 			appType: "custom",
+			base: "/eleventy-starter/", // For GitHub Pages
 			publicDir: "public", // Vite requirement: build processing dir
 			clearScreen: false,
 			assetsInclude: ["**/site.webmanifest", "**/*.txt", "**/*.xml"],
