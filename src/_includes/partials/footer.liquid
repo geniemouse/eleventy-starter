@@ -1,5 +1,5 @@
 <footer>
-	<p>{{ dictionary.footer.strapline }}</p>
+	<p>{{ dictionary.footer.strapline | fallback: "Footer strapline..." }}</p>
 	<p>
 		&copy; {{ copyright }}
 		{{ dictionary.footer.company | fallback: "Company name." }}

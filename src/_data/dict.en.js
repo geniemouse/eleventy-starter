@@ -12,9 +12,9 @@ export default {
 	// A11y/UI close buttons text, not always visible.
 
 	footer: {
-		company: "A Company",
-		rights: "All rights reserved",
-		strapline: "Strong message here ;P",
+		company: "GenieMouse Ltd.",
+		rights: "All rights reserved.",
+		strapline: "This site hosted by GitHub Pages.",
 	},
 
 	footnotes: "Footnotes",

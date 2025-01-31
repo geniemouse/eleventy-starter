@@ -18,9 +18,9 @@ export default {
 
 	// Project information
 	author: {
-		name: "A. Mouse",
-		email: "hello@some-address.com",
-		website: "https://some-address.com",
+		name: "Lucy Barker (GenieMouse)",
+		email: "hello@geniemouse.com",
+		website: "https://geniemouse.com",
 		location: "By the sea",
 	},
 	// rss: {
@@ -29,8 +29,7 @@ export default {
 	// },
 	site: {
 		name: "Eleventy starter",
-		description:
-			"An Eleventy starter project",
+		description: "An Eleventy starter project",
 		url: process.env.URL || "http://localhost:8080",
 		type: "Person", // Publisher/Blog schema: https://schema.org/BlogPosting
 	},

@@ -1,14 +1,39 @@
 ---
 layout: home
-title: GenieMouse.com
+title: Eleventy starter project
 ---
 
-# Hello mouse!
+# Eleventy starter project
 
-This content comes from the `./src/pages/home.md` file.
+This experimental project to trial my ideal Eleventy starter set-up. 
 
-Lorem ipsum dolor sit amet, <sup>consectetur adipiscing</sup> elit. Fusce porttitor tellus ac sem iaculis blandit pretium auctor tellus. Duis suscipit elit sit amet dolor ultrices, cursus tincidunt eros lacinia. Nam vel placerat orci. Sed elit leo, <sub>fermentum consequat</sub> scelerisque eget, mattis a lorem. Curabitur at facilisis turpis. In venenatis venenatis consequat. Maecenas hendrerit nec libero [quis iaculis](#hello-mouse).
+Currently, this involves:
 
-<button>Hello button :)</button>
+* [Bun](https://bun.sh) as package manager &amp; unit testing framework; 
+	<br><small>Bun could easily be swapped out for _node_, at this stage</small>
+* [Eleventy](https://www.11ty.dev) for static site generation
+* [Vite](https://vite.dev) for <mark>JavaScript</mark> & <mark>CSS</mark> bundling via the [eleventy-plugin-vite](https://www.11ty.dev/docs/server-vite/).
 
-<small>This is some small text.</small>
+Let's see how this goes...
+
+## Features
+
+* Home &amp; 404 pages
+* Starter CSS, including dark/light themes
+* CSS post-processing using [Lightning CSS](https://lightningcss.dev/)
+* Critical CSS, generated and inlined by [rollup-plugin-critical](https://github.com/nystudio107/rollup-plugin-critical). 
+* Main CSS file is loaded using [Scott Jehl's `media` loading strategy](https://www.filamentgroup.com/lab/load-css-simpler/)
+* Loads `.env` file for project secrets, using [dotenvx](https://dotenvx.com/docs/)
+* Placeholder favicon sets to differentiate <mark>DEV</mark> / <mark>PROD</mark> environments
+* Site SEO &amp; meta files:
+   * `humans.txt`
+   * `robots.txt`
+   * `site.webmanifest`
+   * `sitemap.xml`
+* GitHub Pages `config.yml`
+* [Biome](https://biomejs.dev/) configuration for formatting &amp; linting
+
+## Planned features
+
+1. RSS feed
+2. Social media `<meta>`-tags & imagery
