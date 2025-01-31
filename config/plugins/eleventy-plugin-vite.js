@@ -3,7 +3,9 @@ import fs from "node:fs";
 
 import browserslist from "browserslist";
 import { browserslistToTargets } from "lightningcss";
+
 import EleventyVitePlugin from "@11ty/eleventy-plugin-vite";
+import CriticalCssPlugin from "rollup-plugin-critical";
 
 import { getStaticFileBanner } from "../utils.js";
 
@@ -49,7 +51,24 @@ export default function runViteForBundlingAssets(eleventyConfig) {
 						banner: `${getStaticFileBanner()}`,
 					},
 					plugins: [
-						removeUnwantedFiles([
+						CriticalCssPlugin({
+							criticalBase: "./_site/",
+							criticalUrl: "./_site/",
+							criticalPages: [
+								{ uri: "./index.html", template: "index" },
+								{ uri: "./404.html", template: "404" },
+							],
+							criticalConfig: {
+								// @info: [Critical options - full list](https://github.com/addyosmani/critical#options)
+								inline: true,
+								penthouse: {
+									// @info: [Penthouse options - full list](https://github.com/pocketjoso/penthouse)
+									forceInclude: [],
+								},
+							},
+						}),
+
+						RemoveUnwantedFilesPlugin([
 							{ name: "README.md", recursive: false },
 						]),
 					],
@@ -83,7 +102,7 @@ export default function runViteForBundlingAssets(eleventyConfig) {
  * @param   {Array}  files  -- Array of objects, e.g.
  * 		`{ name: "SUB_DIRECTORY/FILE_NAME", recursive: BOOLEAN }`
  */
-function removeUnwantedFiles(files) {
+function RemoveUnwantedFilesPlugin(files) {
 	return {
 		name: "remove-files",
 		writeBundle(outputOptions, inputOptions) {
