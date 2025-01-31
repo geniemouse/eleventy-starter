@@ -9,7 +9,7 @@ This experimental project to trial my ideal Eleventy starter set-up.
 
 Currently, this involves:
 
-* [Bun](https://bun.sh) as package manager &amp; unit testing framework; 
+* [Bun](https://bun.sh) as package manager &amp; unit testing framework;
 	<br><small>Bun could easily be swapped out for _node_, at this stage</small>
 * [Eleventy](https://www.11ty.dev) for static site generation
 * [Vite](https://vite.dev) for <mark>JavaScript</mark> & <mark>CSS</mark> bundling via the [eleventy-plugin-vite](https://www.11ty.dev/docs/server-vite/).

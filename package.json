@@ -11,6 +11,7 @@
 	"scripts": {
 		"build": "bunx @11ty/eleventy",
 		"clean": "rimraf --glob _site **/*.map",
+		"preview": "bunx vite preview --outDir _site",
 		"serve": "bunx @11ty/eleventy --serve --incremental"
 	},
 	"devDependencies": {
@@ -23,7 +24,8 @@
 		"js-beautify": "^1.15.1",
 		"lightningcss": "^1.29.1",
 		"rimraf": "^6.0.1",
-		"rollup-plugin-critical": "^1.0.14"
+		"rollup-plugin-critical": "^1.0.14",
+		"vite": "^6.0.11"
 	},
 	"browserslist": ["> 0.25%", "not op_mini all", "not dead"]
 }
