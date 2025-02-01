@@ -17,7 +17,7 @@ export default function runViteForBundlingAssets(eleventyConfig) {
 		// -- https://vite.dev/config/
 		viteOptions: {
 			appType: "custom",
-			base: process.env.BASE || "/",
+			base: process.env.VITE_BASE || "/",
 			publicDir: "public", // Vite requirement: build processing dir
 			clearScreen: false,
 			assetsInclude: ["**/site.webmanifest", "**/*.txt", "**/*.xml"],
@@ -30,11 +30,14 @@ export default function runViteForBundlingAssets(eleventyConfig) {
 					targets: browserslistToTargets(browserslist()),
 				},
 			},
+			// Development
 			server: {
 				mode: "development",
 				middlewareMode: true,
 				open: true,
 			},
+			// Production
+			// Use `bun preview` command to serve `_site` locally
 			build: {
 				mode: "production",
 				sourcemap: true,
@@ -55,8 +58,8 @@ export default function runViteForBundlingAssets(eleventyConfig) {
 							criticalBase: "./_site/",
 							criticalUrl: "./_site/",
 							criticalPages: [
-								{ uri: "./index.html", template: "index" },
-								{ uri: "./404.html", template: "404" },
+								{ uri: "index.html", template: "index" },
+								{ uri: "404.html", template: "404" },
 							],
 							criticalConfig: {
 								// @info: [Critical options - full list](https://github.com/addyosmani/critical#options)

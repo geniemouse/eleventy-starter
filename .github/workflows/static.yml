@@ -29,7 +29,12 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     env:
-      BASE: ${{ vars.BASE }}
+      AUTHOR_NAME: ${{ vars.AUTHOR_NAME }}
+      AUTHOR_EMAIL: ${{ vars.AUTHOR_EMAIL }}
+      AUTHOR_WEBSITE: ${{ vars.AUTHOR_WEBSITE }}
+      AUTHOR_LOCATION: ${{ vars.AUTHOR_LOCATION }}
+      VITE_BASE: ${{ vars.VITE_BASE }}
+      URL: ${{ vars.URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4

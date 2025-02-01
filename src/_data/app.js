@@ -18,10 +18,10 @@ export default {
 
 	// Project information
 	author: {
-		name: "Lucy Barker (GenieMouse)",
-		email: "hello@geniemouse.com",
-		website: "https://geniemouse.com",
-		location: "By the sea",
+		name: process.env.AUTHOR_NAME,
+		email: process.env.AUTHOR_EMAIL,
+		website: process.env.AUTHOR_WEBSITE,
+		location: process.env.AUTHOR_LOCATION,
 	},
 	// rss: {
 	// 	name: "RSS feed title",
