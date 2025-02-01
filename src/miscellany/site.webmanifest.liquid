@@ -4,26 +4,23 @@ excludeFromSitemap: true
 layout: false
 permalink: /public/site.webmanifest
 ---
-
-{% assign BASE = process.env.VITE_BASE | fallback: '/' | remove_last: '/' %}
-
 {
 	"name": "{{ app.site.name }} : {{ app.site.description }}",
 	"short_name": "{{ app.site.name }}",
 	"start_url": "{{ app.site.url  }}",
 	"icons": [
 		{
-			"src": "{{ BASE }}/android-chrome-192x192.png",
+			"src": "{{ base }}/android-chrome-192x192.png",
 			"sizes": "192x192",
 			"type": "image/png"
 		},
 		{
-			"src": "{{ BASE }}/android-chrome-512x512.png",
+			"src": "{{ base }}/android-chrome-512x512.png",
 			"sizes": "512x512",
 			"type": "image/png"
 		},
 		{
-			"src": "{{ BASE }}/maskable.png",
+			"src": "{{ base }}/maskable.png",
 			"sizes": "512x512",
 			"type": "image/png",
 			"purpose": "maskable"

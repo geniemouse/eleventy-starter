@@ -115,6 +115,7 @@ export default function (eleventyConfig) {
 	 * ---
 	 */
 
+	eleventyConfig.addGlobalData("base", () => UTILS.getBase());
 	eleventyConfig.addGlobalData("copyright", () => UTILS.getCurrentYear());
 	eleventyConfig.addGlobalData("dictionary", async () => {
 		var dictFile = await import(

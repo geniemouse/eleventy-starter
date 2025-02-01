@@ -7,7 +7,7 @@ import { browserslistToTargets } from "lightningcss";
 import EleventyVitePlugin from "@11ty/eleventy-plugin-vite";
 import CriticalCssPlugin from "rollup-plugin-critical";
 
-import { getStaticFileBanner } from "../utils.js";
+import { getBase, getStaticFileBanner } from "../utils.js";
 
 export default function runViteForBundlingAssets(eleventyConfig) {
 	eleventyConfig.addPlugin(EleventyVitePlugin, {
@@ -17,7 +17,7 @@ export default function runViteForBundlingAssets(eleventyConfig) {
 		// -- https://vite.dev/config/
 		viteOptions: {
 			appType: "custom",
-			base: process.env.VITE_BASE || "/",
+			base: getBase(),
 			publicDir: "public", // Vite requirement: build processing dir
 			clearScreen: false,
 			assetsInclude: ["**/site.webmanifest", "**/*.txt", "**/*.xml"],

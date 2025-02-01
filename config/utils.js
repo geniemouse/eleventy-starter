@@ -5,6 +5,7 @@
  */
 
 export default {
+	getBase,
 	getCurrentYear,
 	getEnvironment,
 	getHosting,
@@ -34,6 +35,15 @@ const pkg = JSON.parse(
 //  * (TMP?) Solution: revert to node's `readFile` to
 //  * parse the JSON in the mean time.
 //  */
+
+/**
+ * Return project base without the trailing slash
+ * ---
+ * @return  {String}
+ */
+export function getBase() {
+	return (process.env.VITE_BASE || "/").trim().replace(/\/$/, "");
+}
 
 /**
  * Programmatically return the current year.
