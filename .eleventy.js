@@ -22,7 +22,7 @@ import PLUGIN_VITE from "./config/plugins/eleventy-plugin-vite.js";
 import TRANSFORM_MINIFIER from "./config/transforms/html-minifier-terser.js";
 import TRANSFORM_TIDY from "./config/transforms/js-beautify.js";
 
-import UTILS from "./config/utils.js";
+import { PROJECT } from "./config/utils.js";
 
 /**
  * Set 11ty folders
@@ -59,7 +59,7 @@ export default function (eleventyConfig) {
 	// 2). Pass favicons to Vite's `publicDir` directory so Vite can
 	// 	   copy them over to Eleventy's output site root.
 	eleventyConfig.addPassthroughCopy({
-		[`./favicons/${UTILS.getEnvironment().toLowerCase()}`]: "/public",
+		[`./favicons/${PROJECT.ENVIRONMENT.toLowerCase()}`]: "/public",
 	});
 
 	/**
@@ -115,12 +115,10 @@ export default function (eleventyConfig) {
 	 * ---
 	 */
 
-	eleventyConfig.addGlobalData("base", () => UTILS.getBase());
-	eleventyConfig.addGlobalData("copyright", () => UTILS.getCurrentYear());
+	eleventyConfig.addGlobalData("base", () => PROJECT.BASE);
+	eleventyConfig.addGlobalData("copyright", () => PROJECT.YEAR);
 	eleventyConfig.addGlobalData("dictionary", async () => {
-		var dictFile = await import(
-			`./src/_data/dict.${UTILS.getLanguage()}.js`
-		);
+		var dictFile = await import(`./src/_data/dict.${PROJECT.LANGUAGE}.js`);
 		return dictFile.default;
 	});
 	eleventyConfig.addGlobalData("generated", () => new Date());

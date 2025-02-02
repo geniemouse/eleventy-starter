@@ -4,14 +4,19 @@
  * Separate file, so these can be more easily unit tested, as required.
  */
 
+import pkg from "../package.json" with { type: "json" };
+// @note: Running 11ty with this line will yield a
+// ExperimentalWarning on command line, "Importing JSON modules
+// is an experimental feature and might change at any time"
+
+export var PROJECT;
+// @work-around: 11ty error, "does not provide an export named 'PROJECT'"
+// when PROJECT is set directly within default block & called via
+// `import { PROJECT } from ...utils.js` line.
+
 export default {
+	PROJECT,
 	getBase,
-	getCurrentYear,
-	getEnvironment,
-	getHosting,
-	getLanguage,
-	getLocale,
-	getProjectVersion,
 	getStaticFileBanner,
 	isEnvironment,
 };
@@ -21,28 +26,35 @@ export default {
  * ---
  */
 
-import { readFile } from "node:fs/promises";
-// * Bun includes various node APIs for compatibility
-// * cf. https://bun.sh/docs/runtime/nodejs-apis
-
-const pkg = JSON.parse(
-	await readFile(new URL("../package.json", import.meta.url)),
-);
-//  * ^^ Why not import is ESM format directly? e.g.
-//  * `import pkg from "../package.json" with { type: "json" };`
-//  * Eleventy throwing errors during `serve` / `watch` behaviour.
-//  *
-//  * (TMP?) Solution: revert to node's `readFile` to
-//  * parse the JSON in the mean time.
-//  */
+PROJECT = (function setProjectObject() {
+	return {
+		BASE: getBase({ trailingSlash: false }),
+		ENVIRONMENT: getEnvironment(),
+		HOSTING: getHosting(),
+		LANGUAGE: getLanguage(),
+		LOCALE: getLocale(),
+		URL: getUrl(),
+		VERSION: getProjectVersion(),
+		YEAR: getCurrentYear(),
+	};
+})();
 
 /**
- * Return project base without the trailing slash
+ * Return project `BASE` or `VITE_BASE` environment variable, if there is one.
+ * Set a sensible default, if there isn't.
+ * Has option to return value with or without trailing slash character.
  * ---
+ * @param 	{Object} 	options -- `trailingSlash` property {Boolean}
+ * 								   determines trailing slash in base path.
  * @return  {String}
  */
-export function getBase() {
-	return (process.env.VITE_BASE || "/").trim().replace(/\/$/, "");
+export function getBase(options = { trailingSlash: false }) {
+	var base = (process.env.BASE || process.env.VITE_BASE || "/").trim();
+	var { trailingSlash } = options;
+	if (trailingSlash) {
+		return base;
+	}
+	return base.replace(/\/$/, "");
 }
 
 /**
@@ -147,6 +159,19 @@ export function getStaticFileBanner(
 		` * @date: ${new Date().toUTCString()}`,
 		`${commentEnd}`,
 	].join("\n");
+}
+
+/**
+ * Return project `URL` environment variable, if there is one.
+ * Set a sensible default, if there isn't.
+ *
+ * @todo: Rethink if localhost is the sensible default.
+ * 		  What setting might be better?
+ * ---
+ * @return  {String}
+ */
+export function getUrl() {
+	return (process.env.URL || "http://localhost:8080").trim();
 }
 
 /**
