@@ -6,16 +6,7 @@
  * @return  {Object}
  */
 
-import { PROJECT, isEnvironment } from "../../config/utils.js";
-
 export default {
-	env: PROJECT.ENVIRONMENT,
-	language: PROJECT.LANGUAGE,
-	locale: PROJECT.LOCALE,
-	isProduction: isEnvironment("PROD"),
-	hosting: PROJECT.HOSTING,
-	version: PROJECT.VERSION,
-
 	// Project information
 	author: {
 		name: process.env.AUTHOR_NAME,
@@ -30,7 +21,7 @@ export default {
 	site: {
 		name: "Eleventy starter",
 		description: "An Eleventy starter project",
-		url: PROJECT.URL,
+		url: process.env.URL || "http://localhost:8080",
 		type: "Person", // Publisher/Blog schema: https://schema.org/BlogPosting
 	},
 	// socials: {

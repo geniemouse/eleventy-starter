@@ -22,7 +22,7 @@ import PLUGIN_VITE from "./config/plugins/eleventy-plugin-vite.js";
 import TRANSFORM_MINIFIER from "./config/transforms/html-minifier-terser.js";
 import TRANSFORM_TIDY from "./config/transforms/js-beautify.js";
 
-import { PROJECT } from "./config/utils.js";
+import INIT_PROJECT_INFO from "./config/utils.js";
 
 /**
  * Set 11ty folders
@@ -43,6 +43,8 @@ const SITE_CONFIG = {
 };
 
 export default function (eleventyConfig) {
+	const INFO = INIT_PROJECT_INFO();
+
 	/**
 	 * Passthrough files & folders
 	 * ---
@@ -59,7 +61,7 @@ export default function (eleventyConfig) {
 	// 2). Pass favicons to Vite's `publicDir` directory so Vite can
 	// 	   copy them over to Eleventy's output site root.
 	eleventyConfig.addPassthroughCopy({
-		[`./favicons/${PROJECT.ENVIRONMENT.toLowerCase()}`]: "/public",
+		[`./favicons/${INFO.environment.toLowerCase()}`]: "/public",
 	});
 
 	/**
@@ -115,13 +117,16 @@ export default function (eleventyConfig) {
 	 * ---
 	 */
 
-	eleventyConfig.addGlobalData("base", () => PROJECT.BASE);
-	eleventyConfig.addGlobalData("copyright", () => PROJECT.YEAR);
+	eleventyConfig.addGlobalData("base", () => INFO.base);
+	eleventyConfig.addGlobalData("copyright", () => INFO.year);
 	eleventyConfig.addGlobalData("dictionary", async () => {
-		var dictFile = await import(`./src/_data/dict.${PROJECT.LANGUAGE}.js`);
-		return dictFile.default;
+		var { default: dictionary } = await import(
+			`./src/_data/dict.${INFO.language}.js`
+		);
+		return dictionary;
 	});
 	eleventyConfig.addGlobalData("generated", () => new Date());
+	eleventyConfig.addGlobalData("info", () => INFO);
 
 	/**
 	 * Layout aliases

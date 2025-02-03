@@ -1,5 +1,5 @@
-{% if app.env == "DEVELOPMENT" %}
+{% if info.environment == "DEVELOPMENT" %}
 	<div style="position: fixed; bottom: 0; right: 0; padding: .25rem .5rem; background: maroon; color: white; font-family: sans-serif; font-size: 0.6rem;  font-weight: 600; z-index: 9999;">
-		<p>DEV: Build {{ app.version | fallback: pkg.version }}</p>
+		<p>DEV: Build {{ info.version | fallback: pkg.version }}</p>
 	</div>
 {% endif %}

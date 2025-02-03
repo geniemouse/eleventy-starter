@@ -2,9 +2,10 @@
 (function () {
 	"use strict";
 	window.APP = {};
-	APP.ENV = "{{ app.env }} ({{ app.hosting | fallback: "UNKNOWN" }})";
-    APP.LANG = "{{ app.language }}";
-	APP.LOCALE = "{{ app.locale }}";
-	APP.VERSION = "{{ app.version }}";
+	APP.ENV = "{{ info.environment }}";
+    APP.LANG = "{{ info.language }}";
+	APP.LOCALE = "{{ info.locale }}";
+	APP.VERSION = "{{ info.version }}";
+	APP.URL = "{{ info.url }}";
 })();
 </script>

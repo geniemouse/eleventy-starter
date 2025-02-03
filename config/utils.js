@@ -9,35 +9,38 @@ import pkg from "../package.json" with { type: "json" };
 // ExperimentalWarning on command line, "Importing JSON modules
 // is an experimental feature and might change at any time"
 
-export var PROJECT;
-// @work-around: 11ty error, "does not provide an export named 'PROJECT'"
-// when PROJECT is set directly within default block & called via
-// `import { PROJECT } from ...utils.js` line.
-
-export default {
-	PROJECT,
-	getBase,
-	getStaticFileBanner,
-	isEnvironment,
-};
+/**
+ * Default export collects general project information to be
+ * exposed as `eleventy.globalData.info`
+ * ---
+ * @return  {Object}
+ */
+export default function initProjectInfo() {
+	return {
+		base: getBase({ trailingSlash: false }),
+		environment: getEnvironment(),
+		language: getLanguage(),
+		locale: getLocale(),
+		url: getUrl(),
+		version: getProjectVersion(),
+		year: getCurrentYear(),
+	};
+}
 
 /**
  * Utility functions, exported individually
  * ---
+ * Index:
+ * - getBase(options)
+ * - getCurrentYear()
+ * - getEnvironment()
+ * - getLanguage()
+ * - getLocale()
+ * - getProjectVersion()
+ * - getStaticFileBanner()
+ * - getUrl()
+ * - isEnvironment(value)
  */
-
-PROJECT = (function setProjectObject() {
-	return {
-		BASE: getBase({ trailingSlash: false }),
-		ENVIRONMENT: getEnvironment(),
-		HOSTING: getHosting(),
-		LANGUAGE: getLanguage(),
-		LOCALE: getLocale(),
-		URL: getUrl(),
-		VERSION: getProjectVersion(),
-		YEAR: getCurrentYear(),
-	};
-})();
 
 /**
  * Return project `BASE` or `VITE_BASE` environment variable, if there is one.
@@ -90,20 +93,6 @@ export function getEnvironment() {
 				? "development"
 				: "production"
 		)
-			// Test the negative expression; ensures the fall-back value
-			// defaults to (the safer) `PRODUCTION` over "DEVELOPMENT"
-			.toUpperCase()
-	);
-}
-
-/**
- * Site hosted locally or live?
- * ---
- * @return  {String} -- `LOCAL` / `LIVE`
- */
-export function getHosting() {
-	return (
-		(process.env.URL?.includes("localhost") ? "local" : "live")
 			// Test the negative expression; ensures the fall-back value
 			// defaults to (the safer) `PRODUCTION` over "DEVELOPMENT"
 			.toUpperCase()
@@ -164,14 +153,19 @@ export function getStaticFileBanner(
 /**
  * Return project `URL` environment variable, if there is one.
  * Set a sensible default, if there isn't.
- *
- * @todo: Rethink if localhost is the sensible default.
- * 		  What setting might be better?
  * ---
  * @return  {String}
  */
 export function getUrl() {
-	return (process.env.URL || "http://localhost:8080").trim();
+	if (process.env.URL) {
+		return process.env.URL.toLowerCase().trim();
+	}
+
+	console.warn(
+		"Environment variable `URL` is missing.\nUsing value `http://localhost:8080` placeholder value for this build.",
+	);
+
+	return "http://localhost:8080";
 }
 
 /**
